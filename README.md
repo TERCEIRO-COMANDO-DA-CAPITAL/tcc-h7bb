@@ -5,7 +5,7 @@ UI Library para Roblox.
 ## Loadstring
 
 ```lua
-local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NIcoGabrielRealYtr/Avilon-Library/refs/heads/main/Source"))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/TERCEIRO-COMANDO-DA-CAPITAL/tcc-h7bb/refs/heads/main/code/source.lua"))()
 ```
 
 ## Estrutura
