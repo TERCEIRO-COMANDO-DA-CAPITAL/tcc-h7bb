@@ -1,15 +1,12 @@
-# Avilon Library
+# Avilon Library — TechAnatomy
 
 UI Library para Roblox.
 
 ## Loadstring
 
-```lua
-local Library = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/NIcoGabrielRealYtr/Avilon-Library/refs/heads/main/Source"
-))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NIcoGabrielRealYtr/Avilon-Library/refs/heads/main/Source"))()
 
-Estrutura
+## Estrutura
 
 Library
 └── Window
@@ -25,7 +22,7 @@ Library
                 ├── Colorpicker
                 └── Button
 
-Window
+## Window
 
 local Window = Library:Window({
     Name = "Title",
@@ -33,14 +30,14 @@ local Window = Library:Window({
     Logo = "rbxassetid://ID"
 })
 
-Page
+## Page
 
 local Page = Window:Page({
     Name = "Page",
     Icon = "rbxassetid://ID"
 })
 
-SubPage
+## SubPage
 
 local SubPage = Page:SubPage({
     Name = "Settings",
@@ -48,7 +45,7 @@ local SubPage = Page:SubPage({
     Icon = "rbxassetid://ID"
 })
 
-Section
+## Section
 
 local Section = SubPage:Section({
     Name = "Main",
@@ -56,12 +53,10 @@ local Section = SubPage:Section({
     Side = 1
 })
 
-Side = 1 esquerda
-Side = 2 direita
+Side = 1 -- Esquerda
+Side = 2 -- Direita
 
-Components
-
-Toggle
+## Toggle
 
 Section:Toggle({
     Name = "Enabled",
@@ -69,7 +64,7 @@ Section:Toggle({
     Default = false
 })
 
-Label
+## Label
 
 local Label = Section:Label({
     Name = "Status"
@@ -77,7 +72,7 @@ local Label = Section:Label({
 
 Label:SetText("Running")
 
-Keybind
+## Keybind
 
 Label:Keybind({
     Name = "Key",
@@ -91,12 +86,11 @@ Label:Keybind({
 })
 
 Modes:
+Toggle = Alternar
+Hold = Segurar
+Always = Sempre ativo
 
-Toggle
-Hold
-Always
-
-Slider
+## Slider
 
 Section:Slider({
     Name = "Speed",
@@ -105,10 +99,14 @@ Section:Slider({
     Min = 1,
     Max = 100,
     Decimals = 1,
-    Suffix = ""
+    Suffix = "",
+
+    Callback = function(Value)
+        print(Value)
+    end
 })
 
-Dropdown
+## Dropdown
 
 Section:Dropdown({
     Name = "Priority",
@@ -117,11 +115,12 @@ Section:Dropdown({
     Items = {
         "Closest",
         "Lowest HP",
-        "Highest HP"
+        "Highest HP",
+        "Random"
     }
 })
 
-Textbox
+## Textbox
 
 Section:Textbox({
     Name = "Username",
@@ -131,7 +130,7 @@ Section:Textbox({
     Finished = true
 })
 
-Colorpicker
+## Colorpicker
 
 Section:Colorpicker({
     Name = "Color",
@@ -140,7 +139,7 @@ Section:Colorpicker({
     Alpha = 1
 })
 
-Button
+## Button
 
 Section:Button({
     Name = "Execute",
@@ -150,7 +149,7 @@ Section:Button({
     end
 })
 
-API
+## API
 
 Window()
 Page()
@@ -168,11 +167,9 @@ Button()
 
 Label:SetText()
 
-Exemplo
+## Exemplo completo
 
-local Library = loadstring(game:HttpGet(
-    "https://raw.githubusercontent.com/NIcoGabrielRealYtr/Avilon-Library/refs/heads/main/Source"
-))()
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NIcoGabrielRealYtr/Avilon-Library/refs/heads/main/Source"))()
 
 local Window = Library:Window({
     Name = "Avilon",
