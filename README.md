@@ -1,13 +1,16 @@
-Avilon Library
+# Avilon Library
 
 UI Library para Roblox.
 
-Loadstring
+## Loadstring
 
+```lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NIcoGabrielRealYtr/Avilon-Library/refs/heads/main/Source"))()
+```
 
-Estrutura
+## Estrutura
 
+```text
 Library
 └── Window
     └── Page
@@ -21,106 +24,118 @@ Library
                 ├── Textbox
                 ├── Colorpicker
                 └── Button
+```
 
-Window
+## Window
 
 Cria a janela principal.
 
+```lua
 local Window = Library:Window({
     Name = "Title",
     SubName = "SubTitle",
     Logo = "rbxassetid://114856413138528"
 })
+```
 
-Page
+## Page
 
-Cria uma página dentro da Window.
-
+```lua
 local MainPage = Window:Page({
     Name = "Page",
     Icon = "rbxassetid://102973834692853"
 })
+```
 
-SubPage
+## SubPage
 
-Cria uma subpágina dentro da Page.
-
-local SettingsSubPage = MainPage:SubPage({
+```lua
+local SubPage = MainPage:SubPage({
     Name = "SubPage",
     Description = "All settings in one place",
     Icon = "rbxassetid://102973834692853"
 })
+```
 
-Section
+## Section
 
-Cria uma seção dentro da SubPage.
-
-Side = 1 para esquerda e Side = 2 para direita.
-
-local Section = SettingsSubPage:Section({
+```lua
+local Section = SubPage:Section({
     Name = "Title",
     Description = "Description",
     Side = 1
 })
+```
 
-Toggle
+`Side = 1` = esquerda  
+`Side = 2` = direita
 
+## Toggle
+
+```lua
 Section:Toggle({
     Name = "Toggle",
-    Flag = "AimbotEnabled",
+    Flag = "ToggleEnabled",
     Default = false
 })
+```
 
-Label
+## Label
 
+```lua
 local Label = Section:Label({
     Name = "Status: Ready"
 })
+```
 
-Para alterar o texto:
+### SetText
 
-Label:SetText("Status: Running")
+```lua
+Label:SetText("Status: Enabled")
+```
 
-Keybind
+## Keybind
 
+```lua
 Label:Keybind({
-    Name = "Title",
-    Flag = "AimbotKey",
+    Name = "Toggle Key",
+    Flag = "ToggleKey",
     Default = Enum.KeyCode.RightAlt,
     Mode = "Hold",
-
-    Callback = function(State)
-        print("Key state:", State)
+    Callback = function(state)
+        print("Key state:", state)
     end
 })
+```
 
-Modos disponíveis:
+Modes disponíveis:
 
+```text
 Toggle
-
 Hold
-
 Always
+```
 
+## Slider
 
-Slider
-
+```lua
 Section:Slider({
-    Name = "ESP Transparency",
-    Flag = "ESPTransparency",
+    Name = "Transparency",
+    Flag = "Transparency",
     Default = 0.5,
     Min = 0,
     Max = 1,
     Decimals = 0.01,
     Suffix = "",
-
     Callback = function(Value)
         print(Value)
     end
 })
+```
 
-Dropdown
+## Dropdown
 
+```lua
 Section:Dropdown({
     Name = "Target Priority",
     Flag = "TargetPriority",
@@ -132,9 +147,11 @@ Section:Dropdown({
         "Random"
     }
 })
+```
 
-Textbox
+## Textbox
 
+```lua
 Section:Textbox({
     Name = "Username",
     Flag = "BoxName",
@@ -142,47 +159,53 @@ Section:Textbox({
     Placeholder = "Enter name...",
     Finished = true
 })
+```
 
-Colorpicker
+## Colorpicker
 
+```lua
 Section:Colorpicker({
     Name = "ESP Color",
     Flag = "ESPColor",
     Default = Color3.fromRGB(255, 0, 0),
     Alpha = 1
 })
+```
 
-Button
+## Button
 
+```lua
 Section:Button({
-    Name = "Execute",
-
+    Name = "Test",
     Callback = function()
-        print("Executed")
+        print("Button clicked")
     end
 })
+```
 
-API
+## API
 
-Element	Método
+```text
+Library:Window()
+Window:Page()
+Page:SubPage()
+SubPage:Section()
 
-Window	Library:Window()
-Page	Window:Page()
-SubPage	Page:SubPage()
-Section	SubPage:Section()
-Toggle	Section:Toggle()
-Label	Section:Label()
-Keybind	Label:Keybind()
-Slider	Section:Slider()
-Dropdown	Section:Dropdown()
-Textbox	Section:Textbox()
-Colorpicker	Section:Colorpicker()
-Button	Section:Button()
-SetText	Label:SetText()
+Section:Toggle()
+Section:Label()
+Section:Slider()
+Section:Dropdown()
+Section:Textbox()
+Section:Colorpicker()
+Section:Button()
 
+Label:Keybind()
+Label:SetText()
+```
 
-Example
+## Exemplo completo
 
+```lua
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/NIcoGabrielRealYtr/Avilon-Library/refs/heads/main/Source"))()
 
 local Window = Library:Window({
@@ -191,20 +214,20 @@ local Window = Library:Window({
     Logo = "rbxassetid://114856413138528"
 })
 
-local Page = Window:Page({
+local MainPage = Window:Page({
     Name = "Main",
     Icon = "rbxassetid://102973834692853"
 })
 
-local SubPage = Page:SubPage({
+local SubPage = MainPage:SubPage({
     Name = "Settings",
-    Description = "Settings",
+    Description = "Library example",
     Icon = "rbxassetid://102973834692853"
 })
 
 local Section = SubPage:Section({
-    Name = "Main",
-    Description = "Settings",
+    Name = "Settings",
+    Description = "Example controls",
     Side = 1
 })
 
@@ -214,12 +237,31 @@ Section:Toggle({
     Default = false
 })
 
+local Label = Section:Label({
+    Name = "Status: Ready"
+})
+
+Label:Keybind({
+    Name = "Toggle Key",
+    Flag = "ToggleKey",
+    Default = Enum.KeyCode.RightAlt,
+    Mode = "Hold",
+    Callback = function(state)
+        print("Key state:", state)
+    end
+})
+
 Section:Slider({
-    Name = "Speed",
-    Flag = "Speed",
-    Default = 16,
-    Min = 1,
-    Max = 100
+    Name = "Transparency",
+    Flag = "Transparency",
+    Default = 0.5,
+    Min = 0,
+    Max = 1,
+    Decimals = 0.01,
+    Suffix = "",
+    Callback = function(Value)
+        Label:SetText("Transparency: " .. tostring(Value))
+    end
 })
 
 Section:Dropdown({
@@ -228,14 +270,31 @@ Section:Dropdown({
     Default = "Closest",
     Items = {
         "Closest",
-        "Lowest HP"
+        "Lowest HP",
+        "Highest HP",
+        "Random"
     }
 })
 
-Section:Button({
-    Name = "Execute",
+Section:Textbox({
+    Name = "Username",
+    Flag = "Username",
+    Default = "Player",
+    Placeholder = "Enter name...",
+    Finished = true
+})
 
+Section:Colorpicker({
+    Name = "Color",
+    Flag = "Color",
+    Default = Color3.fromRGB(255, 0, 0),
+    Alpha = 1
+})
+
+Section:Button({
+    Name = "Test",
     Callback = function()
-        print("Executed")
+        print("Avilon button clicked")
     end
 })
+```
