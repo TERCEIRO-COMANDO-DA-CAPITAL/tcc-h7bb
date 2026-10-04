@@ -157,10 +157,10 @@ local Library = {
 
     local Themes = {
         ["Preset"] = {
-            ["Accent"] = Color3.fromRGB(255, 255, 255),
+            ["Accent"] = Color3.fromRGB(255, 0, 0),
             ["Accent 2"] = Color3.fromRGB(25, 25, 25),
             ["Accent 3"] = Color3.fromRGB(255, 0, 0),
-            ["Accent 4"] = Color3.fromRGB(225, 66, 6),
+            ["Accent 4"] = Color3.fromRGB(225, 0, 0),
         }
     }
 
